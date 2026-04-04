@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "search_placeholder": "Search for products, categories...",
+    "sign_in": "Sign In",
+    "cart": "Cart",
+    "wishlist": "Wishlist"
+  },
+  "hero": {
+    "title": "Elevate Your Everyday Essentials.",
+    "subtitle": "Discover the most premium products curated just for you.",
+    "shop_now": "Shop Now",
+    "trending": "View Trending",
+    "new_collection": "New Collection 2026"
+  },
+  "footer": {
+    "description": "The ultimate destination for premium quality products.",
+    "shop": "Shop",
+    "support": "Support",
+    "legal": "Legal",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "cod": "Cash on Delivery"
+  },
+  "auth": {
+    "sign_in": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?",
+    "create_account": "Create an account",
+    "signing_in": "Signing in...",
+    "enter_details": "Enter your email and password to access your account"
+  },
+  "product": {
+    "egp": "EGP",
+    "add_to_cart": "Add to Cart",
+    "in_stock": "In Stock",
+    "out_of_stock": "Out of Stock",
+    "reviews": "reviews",
+    "description": "Description",
+    "specifications": "Specifications",
+    "customer_reviews": "Customer Reviews",
+    "technical_specs": "Technical Specs",
+    "free_shipping": "Free Worldwide Shipping",
+    "free_shipping_desc": "On all orders over EGP 1500",
+    "returns": "30 Days Returns",
+    "returns_desc": "If goods have problems",
+    "secure_payment": "Secure Payment",
+    "secure_payment_desc": "100% secure payment",
+    "back_to_products": "Back to Products",
+    "not_found": "Product not found",
+    "not_found_desc": "The product you are looking for does not exist or has been removed.",
+    "showing_results": "Showing results for",
+    "in": "in",
+    "all_categories": "all categories"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "items": "Items",
+    "empty_title": "Your cart is empty",
+    "empty_desc": "Looks like you haven't added anything to your cart yet. Discover our premium products and start shopping!",
+    "start_shopping": "Start Shopping",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "remove": "Remove",
+    "summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "tax": "Estimated Tax",
+    "shipping": "Shipping",
+    "free_shipping_promo": "Add {{amount}} more to get free shipping!",
+    "proceed_to_checkout": "Proceed to Checkout",
+    "free": "Free"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping_info": "Shipping Information",
+    "full_name": "Full Name",
+    "email": "Email",
+    "address": "Street Address",
+    "city": "City",
+    "postal_code": "Postal Code",
+    "payment_method": "Payment Method",
+    "cod_title": "Cash on Delivery (COD)",
+    "cod_desc": "Payment will be collected at your doorstep when your order is delivered.",
+    "place_order": "Place Order",
+    "order_summary": "Order Summary",
+    "items": "items",
+    "total": "Total",
+    "toast_success": "Order placed successfully!",
+    "toast_success_desc": "Your order is being processed for Cash on Delivery."
+  }
+}
