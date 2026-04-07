@@ -31,6 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -56,6 +57,7 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.11",
     "autoprefixer": "^10.4.27",
+    "eslint": "^8.57.1",
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.17"
   }
