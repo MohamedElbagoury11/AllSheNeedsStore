@@ -76,7 +76,9 @@
     "shipping": "الشحن",
     "free_shipping_promo": "أضف {{amount}} أكثر للحصول على شحن مجاني!",
     "proceed_to_checkout": "المتابعة لإتمام الطلب",
-    "free": "مجاني"
+    "free": "مجاني",
+    "you_may_also_like": "قد يعجبك أيضاً",
+    "special_offers": "عروض خاصة"
   },
   "checkout": {
     "title": "إتمام الطلب",

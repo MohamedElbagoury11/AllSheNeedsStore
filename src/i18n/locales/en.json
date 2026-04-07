@@ -76,7 +76,9 @@
     "shipping": "Shipping",
     "free_shipping_promo": "Add {{amount}} more to get free shipping!",
     "proceed_to_checkout": "Proceed to Checkout",
-    "free": "Free"
+    "free": "Free",
+    "you_may_also_like": "You may also like",
+    "special_offers": "Special Offers"
   },
   "checkout": {
     "title": "Checkout",

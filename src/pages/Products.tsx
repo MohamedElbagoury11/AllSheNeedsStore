@@ -12,17 +12,13 @@ import api from '../api/axios';
 const fetchProducts = async (
   category: string | null, 
   sort: string, 
-  search: string | null,
-  minPrice: string | null,
-  maxPrice: string | null
+  search: string | null
 ): Promise<Product[]> => {
   const { data } = await api.get('/products', {
     params: {
       category: category || undefined,
       sort: sort || undefined,
       search: search || undefined,
-      minPrice: minPrice || undefined,
-      maxPrice: maxPrice || undefined,
     }
   });
   // Handle backend wrapper structure if any
@@ -43,19 +39,15 @@ const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category') || 'All';
   const searchTerm = searchParams.get('search') || '';
-  const minPriceFilter = searchParams.get('minPrice') || '';
-  const maxPriceFilter = searchParams.get('maxPrice') || '';
   const [sortParam, setSortParam] = useState(SORTS[0]);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const { data: products, isLoading } = useQuery({
-    queryKey: ['products', categoryFilter, sortParam, searchTerm, minPriceFilter, maxPriceFilter],
+    queryKey: ['products', categoryFilter, sortParam, searchTerm],
     queryFn: () => fetchProducts(
       categoryFilter === 'All' ? null : categoryFilter, 
       SORT_MAP[sortParam] || 'newest', 
-      searchTerm,
-      minPriceFilter,
-      maxPriceFilter
+      searchTerm
     )
   });
 
@@ -73,20 +65,16 @@ const Products = () => {
     const catMatches = !catLower || 
       p.category?.toLowerCase() === catLower;
 
-    // 3. Price filter
-    const price = Number(p.price) || 0;
-    const minP = Number(minPriceFilter) || 0;
-    const maxP = Number(maxPriceFilter) || Infinity;
-    const priceMatches = price >= minP && price <= (maxPriceFilter ? maxP : Infinity);
-
-    return searchMatches && catMatches && priceMatches;
+    return searchMatches && catMatches;
   });
 
   // client-side sorting as fallback
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     const sortVal = SORT_MAP[sortParam] || 'newest';
-    if (sortVal === 'price-asc') return Number(a.price) - Number(b.price);
-    if (sortVal === 'price-desc') return Number(b.price) - Number(a.price);
+    const getSellingPrice = (p: any) => p.onSale && p.discountPrice !== undefined ? p.discountPrice : p.price;
+    
+    if (sortVal === 'price-asc') return Number(getSellingPrice(a)) - Number(getSellingPrice(b));
+    if (sortVal === 'price-desc') return Number(getSellingPrice(b)) - Number(getSellingPrice(a));
     if (sortVal === 'rating') return Number(b.rating) - Number(a.rating);
     if (sortVal === 'newest') {
       const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
@@ -119,14 +107,7 @@ const Products = () => {
     setSearchParams(searchParams);
   };
 
-  const handlePriceChange = (key: string, value: string) => {
-    if (!value) {
-      searchParams.delete(key);
-    } else {
-      searchParams.set(key, value);
-    }
-    setSearchParams(searchParams);
-  };
+
 
   const seoTitle = categoryFilter !== 'All' ? `${categoryFilter} Products | All She Needs` : 'All Products | All She Needs';
   const seoDescription = `Browse our extensive collection of ${categoryFilter !== 'All' ? categoryFilter.toLowerCase() : ''} products. Find the best deals and latest trends at All She Needs.`;
@@ -176,27 +157,6 @@ const Products = () => {
               </ul>
             </div>
             
-            <div className="border-t border-gray-100 pt-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Price Range</h3>
-              <div className="flex items-center gap-2">
-                <input 
-                  type="number" 
-                  placeholder="Min" 
-                  value={minPriceFilter}
-                  onChange={(e) => handlePriceChange('minPrice', e.target.value)}
-                  className="w-full text-sm rounded border border-gray-300 px-2 py-1" 
-                />
-                <span className="text-gray-400">-</span>
-                <input 
-                  type="number" 
-                  placeholder="Max" 
-                  value={maxPriceFilter}
-                  onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
-                  className="w-full text-sm rounded border border-gray-300 px-2 py-1" 
-                />
-              </div>
-            </div>
-
           </div>
         </div>
       </aside>

@@ -17,9 +17,9 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
   
-  const tax = subtotal * 0.08;
+ // const tax = subtotal * 0.08;
   const shipping = subtotal > 150 ? 0 : 15;
-  const total = subtotal + tax + shipping;
+  const total = subtotal + shipping;
 
   React.useEffect(() => {
     if (items.length === 0) {
@@ -146,10 +146,6 @@ const Checkout = () => {
               <div className="flex justify-between text-gray-600">
                 <span>{t('cart.subtotal')}</span>
                 <span className="font-medium text-gray-900">{t('product.egp')} {subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
-                <span>{t('cart.tax')}</span>
-                <span className="font-medium text-gray-900">{t('product.egp')} {tax.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>{t('cart.shipping')}</span>

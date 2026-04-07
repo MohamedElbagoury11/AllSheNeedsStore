@@ -4,14 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { Trash2, ArrowRight, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Button } from '../components/ui/Button';
+import CartRecommendations from '../components/cart/CartRecommendations';
 
 const Cart = () => {
   const { t } = useTranslation();
   const { items, updateQuantity, removeFromCart, subtotal, itemCount } = useCart();
   
-  const tax = subtotal * 0.08; // 8% pseudo-tax
+ // const tax = subtotal * 0.08; // 8% pseudo-tax
   const shipping = subtotal > 150 ? 0 : 15; // Free shipping over $150
-  const total = subtotal + tax + shipping;
+  const total = subtotal + shipping;
 
   if (items.length === 0) {
     return (
@@ -100,10 +101,6 @@ const Cart = () => {
                 <span className="font-medium text-gray-900">{t('product.egp')} {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
-                <span>{t('cart.tax')} (8%)</span>
-                <span className="font-medium text-gray-900">{t('product.egp')} {tax.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
                 <span>{t('cart.shipping')}</span>
                 <span className="font-medium text-gray-900">{shipping === 0 ? <span className="text-green-600 font-bold">{t('cart.free')}</span> : `${t('product.egp')} ${shipping.toFixed(2)}`}</span>
               </div>
@@ -133,6 +130,12 @@ const Cart = () => {
         </div>
 
       </div>
+
+      {/* Recommended Products */}
+      <CartRecommendations 
+        categories={items.map(item => item.product.category)} 
+        excludeIds={items.map(item => item.product.id)} 
+      />
     </div>
   );
 };

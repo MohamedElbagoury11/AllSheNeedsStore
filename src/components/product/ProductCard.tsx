@@ -56,6 +56,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             Trending
           </span>
         )}
+        {product.onSale && (
+          <span className="rounded-full bg-red-500 px-2.5 py-0.5 text-xs font-bold text-white shadow-sm animate-pulse">
+            Sale
+          </span>
+        )}
       </div>
 
       {/* Image & Quick Actions Container */}
@@ -112,7 +117,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span className="text-xs text-gray-500">({product.reviewsCount})</span>
         </div>
         <div className="mt-3 flex items-center justify-between">
-          <p className="text-lg font-bold text-gray-900">{t('product.egp')} {product.price.toFixed(2)}</p>
+          <div className="flex flex-col">
+            <p className="text-lg font-bold text-gray-900">
+              {t('product.egp')} {product.onSale ? product.discountPrice?.toFixed(2) : product.price.toFixed(2)}
+            </p>
+            {product.onSale && (
+              <p className="text-xs text-gray-400 line-through">
+                {t('product.egp')} {product.price.toFixed(2)}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

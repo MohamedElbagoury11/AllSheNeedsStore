@@ -104,23 +104,7 @@ const Home = () => {
       </section>
 
       {/* Features Ribbon */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
-        {[
-          { icon: <Truck size={24} className="text-blue-600" />, title: 'Free Delivery', desc: 'On orders over $50' },
-          { icon: <ShieldCheck size={24} className="text-blue-600" />, title: 'Secure Payment', desc: '100% protected' },
-          { icon: <RefreshCw size={24} className="text-blue-600" />, title: 'Easy Returns', desc: '30-day return policy' },
-          { icon: <CreditCard size={24} className="text-blue-600" />, title: 'Flexible EMI', desc: 'Pay over time' },
-        ].map((feature, idx) => (
-          <div key={idx} className="flex flex-col items-center justify-center p-6 text-center bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="mb-3 p-3 bg-blue-50 rounded-full">
-              {feature.icon}
-            </div>
-            <h4 className="font-semibold text-gray-900">{feature.title}</h4>
-            <p className="text-sm text-gray-500 mt-1">{feature.desc}</p>
-          </div>
-        ))}
-      </section>
-
+     
       {/* Shop by Categories */}
       <section>
         <div className="flex items-center justify-between mb-8">

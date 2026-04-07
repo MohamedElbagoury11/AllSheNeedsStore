@@ -12,6 +12,8 @@ export interface Product {
   description: string;
   price: number;
   category: string;
+  discountPrice?: number;
+  onSale?: boolean;
   images: string[];
   rating: number;
   reviewsCount: number;
