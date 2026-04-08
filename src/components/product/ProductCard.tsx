@@ -13,7 +13,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { addToast } = useNotification();
@@ -23,7 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
-    addToast({ title: 'Added to cart', description: `${product.name} has been added to your cart.`, type: 'success' });
+    const displayName = i18n.language === 'ar' ? (product.nameAr || product.name) : (product.nameEn || product.name);
+    addToast({ title: 'Added to cart', description: `${displayName} has been added to your cart.`, type: 'success' });
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
@@ -105,7 +106,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className="text-xs font-medium text-blue-600 mb-1">{product.category}</p>
         <Link to={`/products/${product.id}`} className="flex-1">
           <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">
-            {product.name}
+            {i18n.language === 'ar' ? (product.nameAr || product.name) : (product.nameEn || product.name)}
           </h3>
         </Link>
         <div className="mt-2 flex items-center gap-1">

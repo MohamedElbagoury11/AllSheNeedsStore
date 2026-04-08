@@ -9,7 +9,11 @@ export interface User {
 export interface Product {
   id: string;
   name: string;
+  nameEn?: string;
+  nameAr?: string;
   description: string;
+  descriptionEn?: string;
+  descriptionAr?: string;
   price: number;
   category: string;
   discountPrice?: number;

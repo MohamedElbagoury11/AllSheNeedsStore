@@ -12,7 +12,7 @@ import { Product } from '../types';
 import api from '../api/axios';
 
 const ProductDetails = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   
   const { data: productData, isLoading, error } = useQuery({
@@ -55,10 +55,13 @@ const ProductDetails = () => {
   // product is guaranteed to exist below this point
   const product = productData;
   const inWishlist = isInWishlist(product.id);
+  
+  const displayName = i18n.language === 'ar' ? (product.nameAr || product.name) : (product.nameEn || product.name);
+  const displayDescription = i18n.language === 'ar' ? (product.descriptionAr || product.description) : (product.descriptionEn || product.description);
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
-    addToast({ title: 'Success', description: `Added ${quantity} ${product.name} to cart.`, type: 'success' });
+    addToast({ title: 'Success', description: `Added ${quantity} ${displayName} to cart.`, type: 'success' });
   };
 
   const handleToggleWishlist = () => {
@@ -74,8 +77,8 @@ const ProductDetails = () => {
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <SEO 
-        title={`${product.name} | All She Needs`} 
-        description={product.description?.substring(0, 150) + '...'} 
+        title={`${displayName} | All She Needs`} 
+        description={displayDescription?.substring(0, 150) + '...'} 
         image={product.images[0]} 
         type="product" 
       />
@@ -115,7 +118,7 @@ const ProductDetails = () => {
         {/* Right: Details */}
         <div className="flex flex-col">
           <p className="text-sm font-semibold text-blue-600 tracking-wide uppercase">{product.category}</p>
-          <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">{product.name}</h1>
+          <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">{displayName}</h1>
           
           <div className="mt-4 flex items-center gap-4">
             <div className="flex items-center text-yellow-400">
@@ -138,7 +141,7 @@ const ProductDetails = () => {
           </div>
 
           <p className="mt-6 text-base text-gray-600 leading-relaxed">
-            {product.description}
+            {displayDescription}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -209,7 +212,7 @@ const ProductDetails = () => {
             {activeTab === 'description' && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('product.description')}</h3>
-                <p className="text-gray-600 leading-relaxed text-lg">{product.description}</p>
+                <p className="text-gray-600 leading-relaxed text-lg">{displayDescription}</p>
                 <p className="text-gray-600 leading-relaxed text-lg mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, veritatis. Facere possimus non ea at expedita, alias temporibus error dolorum ipsum soluta exercitationem, distinctio laboriosam provident obcaecati architecto eum laudantium.</p>
               </motion.div>
             )}

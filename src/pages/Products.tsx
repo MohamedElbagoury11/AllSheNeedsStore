@@ -57,7 +57,11 @@ const Products = () => {
     const searchLower = searchTerm.toLowerCase().trim();
     const searchMatches = !searchLower || 
       p.name?.toLowerCase().includes(searchLower) ||
+      p.nameEn?.toLowerCase().includes(searchLower) ||
+      p.nameAr?.toLowerCase().includes(searchLower) ||
       p.description?.toLowerCase().includes(searchLower) ||
+      p.descriptionEn?.toLowerCase().includes(searchLower) ||
+      p.descriptionAr?.toLowerCase().includes(searchLower) ||
       p.category?.toLowerCase().includes(searchLower);
 
     // 2. Category filter
