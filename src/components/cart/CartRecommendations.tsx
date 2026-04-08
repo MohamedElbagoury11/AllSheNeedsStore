@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import ProductCard from '../product/ProductCard';
+import { PageLoader } from '../common/PageLoader';
 import api from '../../api/axios';
 import { Product } from '../../types';
 
@@ -69,12 +70,7 @@ const CartRecommendations: React.FC<CartRecommendationsProps> = ({ categories, e
   if (isLoading || isOffersLoading) {
     return (
       <div className="mt-16 mb-12">
-        <div className="h-8 w-48 bg-gray-200 rounded animate-pulse mb-8"></div>
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="animate-pulse bg-gray-100 rounded-2xl aspect-[4/5] w-full"></div>
-          ))}
-        </div>
+        <PageLoader />
       </div>
     );
   }

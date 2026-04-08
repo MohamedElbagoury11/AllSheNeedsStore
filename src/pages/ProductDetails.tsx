@@ -8,6 +8,7 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useNotification } from '../context/NotificationContext';
 import { SEO } from '../components/common/SEO';
+import { PageLoader } from '../components/common/PageLoader';
 import { Product } from '../types';
 import api from '../api/axios';
 
@@ -34,12 +35,7 @@ const ProductDetails = () => {
 
   // Show loading BEFORE accessing product properties
   if (isLoading) {
-    return (
-      <div className="py-20 flex justify-center items-center flex-col min-h-[50vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
-        <p className="text-gray-500 font-medium">{t('common.loading')}</p>
-      </div>
-    );
+    return <PageLoader />;
   }
 
   if (error || !productData) {

@@ -2,6 +2,7 @@ import React from 'react';
 import { ShoppingBag, Eye, CreditCard } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
+import { PageLoader } from '../components/common/PageLoader';
 import api from '../api/axios';
 
 const Orders = () => {
@@ -21,7 +22,7 @@ const Orders = () => {
       
       <div className="space-y-6">
         {isLoading ? (
-          <div className="py-12 flex justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>
+          <PageLoader />
         ) : displayOrders.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
             <ShoppingBag size={48} className="text-gray-300 mb-4" />

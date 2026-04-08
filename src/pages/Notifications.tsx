@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bell, Tag, Package, Info } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import { PageLoader } from '../components/common/PageLoader';
 import api from '../api/axios';
 
 const Notifications = () => {
@@ -23,7 +24,7 @@ const Notifications = () => {
 
       <div className="space-y-4">
         {isLoading ? (
-          <div className="py-12 flex justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>
+          <PageLoader />
         ) : displayNotifs.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[30vh] text-center">
             <Bell size={48} className="text-gray-300 mb-4" />

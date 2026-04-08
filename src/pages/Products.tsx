@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ProductCard from '../components/product/ProductCard';
 import { SEO } from '../components/common/SEO';
+import { PageLoader } from '../components/common/PageLoader';
 import { Product } from '../types';
 import { Filter, ChevronDown, Check } from 'lucide-react';
 import api from '../api/axios';
@@ -197,11 +198,7 @@ const Products = () => {
 
         {/* Grid setup */}
         {isLoading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="animate-pulse bg-gray-100 rounded-2xl aspect-[4/5] w-full"></div>
-            ))}
-          </div>
+          <PageLoader />
         ) : displayProducts.length > 0 ? (
           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayProducts.map(product => (

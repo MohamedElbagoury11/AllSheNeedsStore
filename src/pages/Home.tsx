@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import ProductCard from '../components/product/ProductCard';
 import { SEO } from '../components/common/SEO';
+import { PageLoader } from '../components/common/PageLoader';
 import { Product } from '../types';
 import api from '../api/axios';
 
@@ -115,7 +116,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {isCategoriesLoading ? (
-             <div className="col-span-full flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>
+             <div className="col-span-full"><PageLoader /></div>
           ) : displayCategories.length > 0 ? (
             displayCategories.map((cat: any, idx: number) => {
               const imagePath = cat.image || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80';
@@ -143,7 +144,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {isProductsLoading ? (
-            [...Array(4)].map((_, i) => <div key={i} className="animate-pulse bg-gray-100 rounded-2xl aspect-[4/5]"></div>)
+            <div className="col-span-full"><PageLoader /></div>
           ) : displayProducts.length > 0 ? (
             displayProducts.slice(0, 4).map(product => (
               <ProductCard key={product.id} product={product} />
@@ -181,7 +182,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {isProductsLoading ? (
-            [...Array(4)].map((_, i) => <div key={i} className="animate-pulse bg-gray-100 rounded-2xl aspect-[4/5]"></div>)
+            <div className="col-span-full"><PageLoader /></div>
           ) : displayProducts.length > 4 ? (
             displayProducts.slice(4, 8).map(product => (
               <ProductCard key={product.id} product={product} />
