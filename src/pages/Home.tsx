@@ -120,13 +120,14 @@ const Home = () => {
           ) : displayCategories.length > 0 ? (
             displayCategories.map((cat: any, idx: number) => {
               const imagePath = cat.image || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80';
+              const catDisplayName = i18n.language === 'ar' ? (cat.nameAr || cat.name) : (cat.nameEn || cat.name);
               return (
                 <Link key={cat.id || idx} to={`/products?category=${encodeURIComponent(cat.name)}`} className="group relative block h-40 sm:h-64 overflow-hidden rounded-2xl">
                   <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-colors duration-300"></div>
-                  <img src={imagePath} alt={cat.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src={imagePath} alt={catDisplayName} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white">
-                    <h3 className="text-xl sm:text-2xl font-bold drop-shadow-md">{cat.name}</h3>
-                    <p className="text-sm opacity-90 drop-shadow-sm mt-1">{cat.count || 0} Items</p>
+                    <h3 className="text-xl sm:text-2xl font-bold drop-shadow-md">{catDisplayName}</h3>
+                    <p className="text-sm opacity-90 drop-shadow-sm mt-1">{cat.count || 0} {t('product.items', 'Items')}</p>
                   </div>
                 </Link>
               );

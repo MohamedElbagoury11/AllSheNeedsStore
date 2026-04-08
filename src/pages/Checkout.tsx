@@ -11,7 +11,7 @@ import { Button } from '../components/ui/Button';
 import api from '../api/axios';
 
 const Checkout = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { items, subtotal, clearCart } = useCart();
   const { addToast } = useNotification();
   const navigate = useNavigate();
@@ -133,7 +133,7 @@ const Checkout = () => {
                     <img src={product.images[0]} alt="" className="w-full h-full object-cover rounded" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-sm font-bold text-gray-900 line-clamp-1">{product.name}</h4>
+                    <h4 className="text-sm font-bold text-gray-900 line-clamp-1">{i18n.language === 'ar' ? (product.nameAr || product.name) : (product.nameEn || product.name)}</h4>
                     <p className="text-xs text-gray-500 mt-0.5">{t('cart.quantity')}: {quantity}</p>
                     <p className="text-sm font-semibold text-gray-900 mt-1">{t('product.egp')} {(product.price * quantity).toFixed(2)}</p>
                   </div>

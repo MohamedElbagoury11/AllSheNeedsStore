@@ -7,7 +7,7 @@ import { Button } from '../components/ui/Button';
 import CartRecommendations from '../components/cart/CartRecommendations';
 
 const Cart = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { items, updateQuantity, removeFromCart, subtotal, itemCount } = useCart();
   
  // const tax = subtotal * 0.08; // 8% pseudo-tax
@@ -55,7 +55,9 @@ const Cart = () => {
                     <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+                    <h3 className="font-semibold text-gray-900 line-clamp-2">
+                      {i18n.language === 'ar' ? (product.nameAr || product.name) : (product.nameEn || product.name)}
+                    </h3>
                     <p className="text-sm text-gray-500 mt-1">{product.category}</p>
                     <button 
                       onClick={() => removeFromCart(product.id)}

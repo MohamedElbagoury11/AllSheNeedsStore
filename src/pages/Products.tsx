@@ -36,7 +36,7 @@ const SORT_MAP: Record<string, string> = {
 };
 
 const Products = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category') || 'All';
   const searchTerm = searchParams.get('search') || '';
@@ -101,7 +101,15 @@ const Products = () => {
   });
 
   // Ensure "All" is always mapped correctly
-  const dynamicCategories = ['All', ...(categoriesData ? categoriesData.map((c: any) => c.name) : ['Electronics', 'Fashion', 'Home & Living', 'Beauty'])];
+  const dynamicCategories = [
+    { id: 'all', name: 'All', nameEn: 'All', nameAr: 'الكل' }, 
+    ...(categoriesData ? categoriesData : [
+      { name: 'Electronics', nameEn: 'Electronics', nameAr: 'إلكترونيات' },
+      { name: 'Fashion', nameEn: 'Fashion', nameAr: 'أزياء' },
+      { name: 'Home & Living', nameEn: 'Home & Living', nameAr: 'المنزل والمعيشة' },
+      { name: 'Beauty', nameEn: 'Beauty', nameAr: 'الجمال' }
+    ])
+  ];
 
   const handleCategoryChange = (cat: string) => {
     if (cat === 'All') {
@@ -145,7 +153,9 @@ const Products = () => {
             <div>
               <h3 className="text-sm font-semibold text-gray-900 mb-3">Categories</h3>
               <ul className="space-y-2">
-                {dynamicCategories.map(cat => {
+                {dynamicCategories.map(catObj => {
+                  const cat = catObj.name;
+                  const displayName = i18n.language === 'ar' ? (catObj.nameAr || catObj.name) : (catObj.nameEn || catObj.name);
                   const isActive = categoryFilter.toLowerCase() === cat.toLowerCase();
                   return (
                     <li key={cat}>
@@ -153,7 +163,7 @@ const Products = () => {
                         onClick={() => handleCategoryChange(cat)}
                         className={`text-sm w-full text-left flex items-center justify-between ${isActive ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}
                       >
-                        {cat}
+                        {displayName}
                         {isActive && <Check size={16} />}
                       </button>
                     </li>
