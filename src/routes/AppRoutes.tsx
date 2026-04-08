@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import { ProtectedRoute } from '../components/common/ProtectedRoute';
+import { ScrollToTop } from '../components/common/ScrollToTop';
 
 // Public Pages
 import Home from '../pages/Home';
@@ -23,6 +24,7 @@ import Profile from '../pages/Profile';
 
 const AppRoutes = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />

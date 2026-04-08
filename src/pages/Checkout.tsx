@@ -32,8 +32,7 @@ const Checkout = () => {
       await api.post('/orders', {
         shipping: data,
         items: items.map(item => ({ productId: item.product.id, quantity: item.quantity })),
-        total: total,
-        paymentMethod: 'COD'
+        total: total
       });
       
       clearCart();
