@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import SEO from '../components/common/SEO';
+import { SEO } from '../components/common/SEO';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 
@@ -117,7 +117,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="mt-8">
-              <Button type="submit" variant="primary" className="w-full">
+              <Button type="submit" variant="default" className="w-full">
                 {t('contact.submit')}
               </Button>
             </div>

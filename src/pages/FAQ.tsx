@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import SEO from '../components/common/SEO';
+import { SEO } from '../components/common/SEO';
 
 interface FAQItemProps {
   question: string;
