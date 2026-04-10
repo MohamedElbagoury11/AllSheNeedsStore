@@ -166,19 +166,7 @@ const ProductDetails = () => {
             </button>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-white/40 backdrop-blur-md border border-white/30 shadow-sm">
-              <Truck size={24} className="text-blue-600 shrink-0" />
-              <div>
-                <p className="font-semibold text-xs text-gray-900">{t('product.free_shipping')}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-white/40 backdrop-blur-md border border-white/30 shadow-sm">
-              <RefreshCw size={24} className="text-blue-600 shrink-0" />
-              <div>
-                <p className="font-semibold text-xs text-gray-900">{t('product.returns')}</p>
-              </div>
-            </div>
+          <div className="mt-10 grid grid-cols-1 gap-4">
             <div className="flex items-center gap-3 p-4 rounded-xl bg-white/40 backdrop-blur-md border border-white/30 shadow-sm">
               <ShieldCheck size={24} className="text-blue-600 shrink-0" />
               <div>

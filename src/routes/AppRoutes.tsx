@@ -21,6 +21,10 @@ import Wishlist from '../pages/Wishlist';
 import SearchResults from '../pages/SearchResults';
 import Notifications from '../pages/Notifications';
 import Profile from '../pages/Profile';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
+import FAQ from '../pages/FAQ';
+import Terms from '../pages/Terms';
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -36,6 +40,10 @@ const AppRoutes = () => (
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/terms" element={<Terms />} />
 
         {/* Protected Routes directly inside MainLayout */}
         <Route element={<ProtectedRoute />}>

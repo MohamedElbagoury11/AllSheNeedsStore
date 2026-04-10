@@ -11,7 +11,7 @@ const Cart = () => {
   const { items, updateQuantity, removeFromCart, subtotal, itemCount } = useCart();
   
  // const tax = subtotal * 0.08; // 8% pseudo-tax
-  const shipping = subtotal > 150 ? 0 : 15; // Free shipping over $150
+  const shipping = 50; // Flat shipping fee
   const total = subtotal + shipping;
 
   if (items.length === 0) {
@@ -106,9 +106,7 @@ const Cart = () => {
                 <span>{t('cart.shipping')}</span>
                 <span className="font-medium text-gray-900">{shipping === 0 ? <span className="text-green-600 font-bold">{t('cart.free')}</span> : `${t('product.egp')} ${shipping.toFixed(2)}`}</span>
               </div>
-              {shipping > 0 && (
-                <p className="text-xs text-blue-600 bg-blue-50/50 p-2 rounded-md">{t('cart.free_shipping_promo', { amount: (150 - subtotal).toFixed(2) })}</p>
-              )}
+
             </div>
 
             <div className="border-t border-gray-200 mt-6 pt-6 flex justify-between items-center mb-6">

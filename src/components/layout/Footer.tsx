@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ShoppingBag, Facebook, Twitter, Instagram, Github } from 'lucide-react';
+import { ShoppingBag, Facebook, Instagram, Music2, MessageCircle } from 'lucide-react';
 import Logo from '../common/Logo';
 
 const Footer = () => {
@@ -18,10 +18,38 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="mt-6 flex gap-4 rtl:flex-row-reverse rtl:justify-end">
-              <a href="https://www.facebook.com/groups/482254669902386" className="text-gray-400 hover:text-blue-600"><Facebook size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-blue-400"><Twitter size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-pink-600"><Instagram size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-gray-900"><Github size={20} /></a>
+              <a 
+                href="https://www.facebook.com/groups/482254669902386" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-blue-600"
+              >
+                <Facebook size={20} />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@all.she.needs1?_r=1&_t=ZS-95QPugTI4pc" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-black"
+              >
+                <Music2 size={20} />
+              </a>
+              <a 
+                href="https://www.instagram.com/allsheneeds201?igsh=MXY5enI0czRuYjlhcg%3D%3D" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-pink-600"
+              >
+                <Instagram size={20} />
+              </a>
+              <a 
+                href="https://wa.me/+201091712619" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-green-500"
+              >
+                <MessageCircle size={20} />
+              </a>
             </div>
           </div>
           
@@ -37,6 +65,7 @@ const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">{t('footer.support')}</h3>
             <ul className="mt-4 space-y-3">
+              <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600">Our Story</Link></li>
               <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600">Contact Us</Link></li>
               <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600">FAQs</Link></li>
             </ul>
