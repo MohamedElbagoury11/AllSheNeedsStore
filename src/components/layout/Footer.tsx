@@ -18,7 +18,7 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="mt-6 flex gap-4 rtl:flex-row-reverse rtl:justify-end">
-              <a href="#" className="text-gray-400 hover:text-blue-600"><Facebook size={20} /></a>
+              <a href="https://www.facebook.com/groups/482254669902386" className="text-gray-400 hover:text-blue-600"><Facebook size={20} /></a>
               <a href="#" className="text-gray-400 hover:text-blue-400"><Twitter size={20} /></a>
               <a href="#" className="text-gray-400 hover:text-pink-600"><Instagram size={20} /></a>
               <a href="#" className="text-gray-400 hover:text-gray-900"><Github size={20} /></a>

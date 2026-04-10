@@ -9,6 +9,7 @@ import { SEO } from '../components/common/SEO';
 import { PageLoader } from '../components/common/PageLoader';
 import { Product } from '../types';
 import api from '../api/axios';
+import i18n from '../i18n/config';
 
 const getCategoryIcon = (name: string) => {
   const n = name.toLowerCase();
