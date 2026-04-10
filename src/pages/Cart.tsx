@@ -104,7 +104,6 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>{t('cart.shipping')}</span>
-                <span className="font-medium text-gray-900">{shipping === 0 ? <span className="text-green-600 font-bold">{t('cart.free')}</span> : `${t('product.egp')} ${shipping.toFixed(2)}`}</span>
               </div>
 
             </div>
