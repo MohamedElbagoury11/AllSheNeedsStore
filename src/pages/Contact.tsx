@@ -44,7 +44,7 @@ const Contact = () => {
                 <dd>
                   <strong>{t('contact.phone_title')}</strong>
                   <br />
-                  <a className="hover:text-gray-900" href="tel:+201000000000">+20 100 000 0000</a>
+                  <a className="hover:text-gray-900" href="tel:+201091712619">+201091712619</a>
                 </dd>
               </div>
               <div className="flex gap-x-4">
