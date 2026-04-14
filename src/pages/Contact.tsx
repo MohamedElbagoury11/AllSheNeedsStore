@@ -27,7 +27,7 @@ const Contact = () => {
             <dl className="mt-10 space-y-6 text-base leading-7 text-gray-600">
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only">Address</span>
+                  <span className="sr-only">{t('common.address_label')}</span>
                   <MapPin className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>
@@ -38,7 +38,7 @@ const Contact = () => {
               </div>
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only">Telephone</span>
+                  <span className="sr-only">{t('common.phone_label')}</span>
                   <Phone className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>
@@ -49,7 +49,7 @@ const Contact = () => {
               </div>
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only">Email</span>
+                  <span className="sr-only">{t('common.email_label')}</span>
                   <Mail className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>

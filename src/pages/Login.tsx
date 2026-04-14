@@ -27,11 +27,11 @@ const Login = () => {
       if (!token || !user) throw new Error('Invalid authentication response');
 
       login(token, user);
-      addToast({ title: 'Welcome back!', type: 'success' });
+      addToast({ title: t('auth.welcome_back'), type: 'success' });
       navigate('/');
     } catch (error: any) {
       addToast({ 
-        title: 'Login failed', 
+        title: t('auth.login_failed'), 
         description: error.response?.data?.message || error.message, 
         type: 'error' 
       });
@@ -54,7 +54,7 @@ const Login = () => {
               <Input
                 type="email"
                 placeholder="m@example.com"
-                {...register('email', { required: 'Email is required' })}
+                {...register('email', { required: t('auth.email_required') })}
               />
               {errors.email && <span className="text-xs text-red-500">{errors.email.message as string}</span>}
             </div>
@@ -66,7 +66,7 @@ const Login = () => {
               </div>
               <Input
                 type="password"
-                {...register('password', { required: 'Password is required' })}
+                {...register('password', { required: t('auth.password_required') })}
               />
               {errors.password && <span className="text-xs text-red-500">{errors.password.message as string}</span>}
             </div>

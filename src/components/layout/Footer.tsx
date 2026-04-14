@@ -57,25 +57,25 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">{t('footer.shop')}</h3>
             <ul className="mt-4 space-y-3">
               <li><Link to="/products" className="text-sm text-gray-500 hover:text-blue-600">{t('nav.shop')}</Link></li>
-              <li><Link to="/products?category=trending" className="text-sm text-gray-500 hover:text-blue-600">Trending</Link></li>
-              <li><Link to="/products?category=new" className="text-sm text-gray-500 hover:text-blue-600">New Arrivals</Link></li>
+              <li><Link to="/products?category=trending" className="text-sm text-gray-500 hover:text-blue-600">{t('hero.trending')}</Link></li>
+              <li><Link to="/products?category=new" className="text-sm text-gray-500 hover:text-blue-600">{t('footer.arrivals')}</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">{t('footer.support')}</h3>
             <ul className="mt-4 space-y-3">
-              <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600">Our Story</Link></li>
-              <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600">Contact Us</Link></li>
-              <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600">FAQs</Link></li>
+              <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600">{t('about.title')}</Link></li>
+              <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600">{t('contact.title')}</Link></li>
+              <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600">{t('faq.title_short', 'FAQs')}</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">{t('footer.legal')}</h3>
             <ul className="mt-4 space-y-3">
-              <li><Link to="/privacy" className="text-sm text-gray-500 hover:text-blue-600">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-sm text-gray-500 hover:text-blue-600">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="text-sm text-gray-500 hover:text-blue-600">{t('footer.privacy')}</Link></li>
+              <li><Link to="/terms" className="text-sm text-gray-500 hover:text-blue-600">{t('terms.title')}</Link></li>
             </ul>
           </div>
         </div>

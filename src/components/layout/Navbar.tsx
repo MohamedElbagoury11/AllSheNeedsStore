@@ -41,7 +41,7 @@ const Navbar = () => {
           <form onSubmit={handleSearch} className="relative w-full">
             <button 
               type="submit"
-              title="Search"
+              title={t('nav.search')}
               className={`absolute inset-y-0 flex items-center hover:text-blue-600 transition-colors ${document.documentElement.dir === 'rtl' ? 'right-3' : 'left-3'}`}
             >
               <Search size={18} className="text-gray-400" />

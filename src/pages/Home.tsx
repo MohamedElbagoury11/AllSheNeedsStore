@@ -44,8 +44,8 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-16 pb-12">
       <SEO 
-        title="All She Needs | Your Ultimate Shopping Destination" 
-        description="Shop for the latest trends in fashion, beauty, electronics, and home essentials. Quality products and exclusive deals."
+        title={`${t('nav.home')} | All She Needs`} 
+        description={t('hero.subtitle')}
       />
       {/* Hero Banner Section */}
       <section className="relative w-full h-[500px] sm:h-[600px] overflow-hidden rounded-3xl bg-gray-900 group">
@@ -110,9 +110,9 @@ const Home = () => {
       {/* Shop by Categories */}
       <section>
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Shop by Categories</h2>
+          <h2 className=\"text-2xl font-bold text-gray-900 tracking-tight\">{t('home.shop_by_category')}</h2>
           <Link to="/products" className="text-blue-600 font-medium hover:underline flex items-center">
-            View All <ArrowRight size={16} className="ml-1" />
+            {t('hero.shop_now')} <ArrowRight size={16} className="ml-1 rtl:rotate-180" />
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -128,13 +128,13 @@ const Home = () => {
                   <img src={imagePath} alt={catDisplayName} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white">
                     <h3 className="text-xl sm:text-2xl font-bold drop-shadow-md">{catDisplayName}</h3>
-                    <p className="text-sm opacity-90 drop-shadow-sm mt-1">{cat.count || 0} {t('product.items', 'Items')}</p>
+                    <p className="text-sm opacity-90 drop-shadow-sm mt-1">{cat.count || 0} {t('cart.items')}</p>
                   </div>
                 </Link>
               );
             })
           ) : (
-            <div className="col-span-full text-center text-gray-500 py-8">No categories found</div>
+            <div className="col-span-full text-center text-gray-500 py-8">{t('home.no_categories')}</div>
           )}
         </div>
       </section>
@@ -142,7 +142,7 @@ const Home = () => {
       {/* Featured Products */}
       <section>
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Featured Products</h2>
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{t('home.featured_products')}</h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {isProductsLoading ? (
@@ -152,7 +152,7 @@ const Home = () => {
               <ProductCard key={product.id} product={product} />
             ))
           ) : (
-            <div className="col-span-full text-center text-gray-500 py-8">No products available yet.</div>
+            <div className="col-span-full text-center text-gray-500 py-8">{t('home.no_products')}</div>
           )}
         </div>
       </section>
@@ -180,7 +180,7 @@ const Home = () => {
       {/* Trending Now */}
       <section>
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Trending Now</h2>
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{t('home.trending_now')}</h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {isProductsLoading ? (
@@ -190,7 +190,7 @@ const Home = () => {
               <ProductCard key={product.id} product={product} />
             ))
           ) : (
-            <div className="col-span-full text-center text-gray-500 py-8">More products coming soon.</div>
+            <div className="col-span-full text-center text-gray-500 py-8">{t('home.coming_soon')}</div>
           )}
         </div>
       </section>

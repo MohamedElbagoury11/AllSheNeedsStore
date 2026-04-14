@@ -122,7 +122,7 @@ const Cart = () => {
             <div className="mt-6 flex items-center justify-center gap-2">
               {/* Payment icons removed for COD focus */}
               <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold border border-gray-200 px-3 py-1 rounded-full">
-                {t('common.cod')} Only
+                {t('common.cod')} {t('common.only')}
               </div>
             </div>
           </div>

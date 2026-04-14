@@ -39,7 +39,7 @@ const Checkout = () => {
       addToast({ title: t('checkout.toast_success'), description: t('checkout.toast_success_desc'), type: 'success' });
       navigate('/orders');
     } catch (err) {
-      addToast({ title: t('common.error'), description: 'There was an error placing your order.', type: 'error' });
+      addToast({ title: t('common.error'), description: t('checkout.error_placing'), type: 'error' });
     }
   };
 
@@ -67,28 +67,28 @@ const Checkout = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">{t('checkout.full_name')}</label>
-                  <Input {...register('firstName', { required: 'Required' })} />
+                  <Input {...register('firstName', { required: t('common.required') })} />
                   {errors.firstName && <span className="text-xs text-red-500">{errors.firstName.message as string}</span>}
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">{t('auth.email')}</label>
-                  <Input type="email" {...register('email', { required: 'Required' })} />
+                  <Input type="email" {...register('email', { required: t('common.required') })} />
                   {errors.email && <span className="text-xs text-red-500">{errors.email.message as string}</span>}
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">{t('checkout.address')}</label>
-                <Input {...register('address', { required: 'Required' })} />
+                <Input {...register('address', { required: t('common.required') })} />
                 {errors.address && <span className="text-xs text-red-500">{errors.address.message as string}</span>}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2 md:col-span-1">
                   <label className="text-sm font-medium text-gray-700">{t('checkout.city')}</label>
-                  <Input {...register('city', { required: 'Required' })} />
+                  <Input {...register('city', { required: t('common.required') })} />
                 </div>
                 <div className="space-y-2 md:col-span-1">
                   <label className="text-sm font-medium text-gray-700">{t('checkout.postal_code')}</label>
-                  <Input {...register('zipCode', { required: 'Required' })} />
+                  <Input {...register('zipCode', { required: t('common.required') })} />
                 </div>
               </div>
             </CardContent>
@@ -115,7 +115,7 @@ const Checkout = () => {
               </div>
               <p className="text-xs text-gray-500 italic mt-2 flex items-center gap-1.5">
                 <ShieldCheck size={14} className="text-gray-400" />
-                By placing this order, you agree to pay the total amount at the time of delivery.
+                {t('checkout.agreement')}
               </p>
             </CardContent>
           </Card>

@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { useWishlist } from '../context/WishlistContext';
 import ProductCard from '../components/product/ProductCard';
 import { Button } from '../components/ui/Button';
+import { useTranslation } from 'react-i18next';
 
 const Wishlist = () => {
+  const { t } = useTranslation();
   const { items } = useWishlist();
 
   if (items.length === 0) {
@@ -14,12 +16,12 @@ const Wishlist = () => {
         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6 text-gray-400">
           <HeartCrack size={40} />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Wishlist is empty</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">{t('wishlist.empty_title')}</h2>
         <p className="text-gray-500 mb-8 max-w-md">
-          You haven't saved any items yet. Find something you love and click the heart icon.
+          {t('wishlist.empty_desc')}
         </p>
         <Link to="/products">
-          <Button size="lg" className="rounded-full px-8">Discover Products</Button>
+          <Button size="lg" className="rounded-full px-8">{t('wishlist.discover')}</Button>
         </Link>
       </div>
     );
@@ -28,9 +30,9 @@ const Wishlist = () => {
   return (
     <div className="py-6">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Your Wishlist</h1>
+        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">{t('wishlist.title')}</h1>
         <span className="px-4 py-1.5 bg-gray-100 text-gray-900 font-semibold rounded-full text-sm">
-          {items.length} Items Saved
+          {items.length} {t('wishlist.items_saved')}
         </span>
       </div>
       

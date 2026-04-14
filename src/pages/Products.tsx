@@ -26,13 +26,13 @@ const fetchProducts = async (
   return data.data ? data.data : data; 
 };
 
-const SORTS = ['Newest', 'Price: Low to High', 'Price: High to Low', 'Best Rating'];
+const SORT_KEYS = ['newest', 'price-asc', 'price-desc', 'rating'];
 
-const SORT_MAP: Record<string, string> = {
-  'Newest': 'newest',
-  'Price: Low to High': 'price-asc',
-  'Price: High to Low': 'price-desc',
-  'Best Rating': 'rating'
+const SORT_VALUES: Record<string, string> = {
+  'newest': 'newest',
+  'price-asc': 'price-asc',
+  'price-desc': 'price-desc',
+  'rating': 'rating'
 };
 
 const Products = () => {
@@ -40,14 +40,14 @@ const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get('category') || 'All';
   const searchTerm = searchParams.get('search') || '';
-  const [sortParam, setSortParam] = useState(SORTS[0]);
+  const [sortParam, setSortParam] = useState(SORT_KEYS[0]);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const { data: products, isLoading } = useQuery({
     queryKey: ['products', categoryFilter, sortParam, searchTerm],
     queryFn: () => fetchProducts(
       categoryFilter === 'All' ? null : categoryFilter, 
-      SORT_MAP[sortParam] || 'newest', 
+      sortParam, 
       searchTerm
     )
   });
@@ -75,7 +75,7 @@ const Products = () => {
 
   // client-side sorting as fallback
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    const sortVal = SORT_MAP[sortParam] || 'newest';
+    const sortVal = sortParam;
     const getSellingPrice = (p: any) => p.onSale && p.discountPrice !== undefined ? p.discountPrice : p.price;
     
     if (sortVal === 'price-asc') return Number(getSellingPrice(a)) - Number(getSellingPrice(b));
@@ -130,14 +130,7 @@ const Products = () => {
       <SEO title={seoTitle} description={seoDescription} />
       <div className="md:hidden flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
         <button 
-          onClick={() => setShowMobileFilters(!showMobileFilters)}
-          className="flex items-center gap-2 font-bold text-gray-900 bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-200"
-        >
-          <Filter size={18} />
-          <span>{showMobileFilters ? 'Hide Filters' : 'Show Filters'}</span>
-        </button>
-        <div className="text-sm font-medium text-gray-500">
-          {displayProducts.length} Products
+          {displayProducts.length} {t('products.total_products', 'Products')}
         </div>
       </div>
 
@@ -146,12 +139,12 @@ const Products = () => {
         <div>
           <div className="flex items-center gap-2 font-bold mb-4 border-b border-gray-200 pb-2">
             <Filter size={20} />
-            <h2>Filters</h2>
+            <h2>{t('products.filters')}</h2>
           </div>
           
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Categories</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">{t('products.categories')}</h3>
               <ul className="space-y-2">
                 {dynamicCategories.map(catObj => {
                   const cat = catObj.name;
@@ -189,7 +182,7 @@ const Products = () => {
             {displayProducts.length > 0 && <span className="ml-2">({displayProducts.length})</span>}
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">Sort by:</span>
+            <span className="text-sm text-gray-500">{t('products.sort_by')}:</span>
             <div className="relative">
               <select 
                 title="Sort Options"
@@ -197,7 +190,11 @@ const Products = () => {
                 onChange={(e) => setSortParam(e.target.value)}
                 className="appearance-none bg-gray-50 border border-gray-200 text-sm font-medium text-gray-900 rounded-md pl-4 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 cursor-pointer"
               >
-                {SORTS.map(sort => <option key={sort} value={sort}>{sort}</option>)}
+                {SORT_KEYS.map(key => (
+                  <option key={key} value={key}>
+                    {t(`products.sort_${key.replace('-', '_')}`)}
+                  </option>
+                ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                 <ChevronDown size={16} />
@@ -217,17 +214,17 @@ const Products = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center flex-1 min-h-[400px] text-center">
-            <h3 className="text-xl font-bold text-gray-900 mt-4">No products found</h3>
-            <p className="text-gray-500 mt-2">Try adjusting your filters or search query.</p>
+            <h3 className="text-xl font-bold text-gray-900 mt-4">{t('products.no_results')}</h3>
+            <p className="text-gray-500 mt-2">{t('products.try_adjusting')}</p>
           </div>
         )}
 
         {/* Pagination mock */}
         <div className="mt-12 flex items-center justify-center gap-2">
-          <button className="h-10 px-4 rounded border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+          <button className="h-10 px-4 rounded border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50" disabled>{t('products.previous')}</button>
           <button title="Page 1" className="h-10 w-10 flex items-center justify-center rounded border border-blue-600 bg-blue-600 text-white text-sm font-medium">1</button>
           <button title="Page 2" className="h-10 w-10 flex items-center justify-center rounded border border-gray-200 text-gray-700 bg-white hover:bg-gray-50 text-sm font-medium">2</button>
-          <button className="h-10 px-4 rounded border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</button>
+          <button className="h-10 px-4 rounded border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50">{t('products.next')}</button>
         </div>
         
       </div>

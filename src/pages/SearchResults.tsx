@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { useTranslation } from 'react-i18next';
 
 // For a real app, you would use React Query here similarly to Products.tsx
 const SearchResults = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
 
@@ -14,13 +15,13 @@ const SearchResults = () => {
         <Search size={40} />
       </div>
       <h2 className="text-3xl font-bold text-gray-900 mb-2">
-        {query ? `No results found for "${query}"` : 'Enter a search term'}
+        {query ? t('products.no_results_for', { query }) : t('products.enter_search')}
       </h2>
       <p className="text-gray-500 mb-8 max-w-md">
-        We couldn't find anything matching your search. Please try checking your spelling or use more general terms.
+        {t('products.search_empty_desc')}
       </p>
       <Link to="/products">
-        <Button size="lg" className="rounded-full px-8">Browse All Products</Button>
+        <Button size="lg" className="rounded-full px-8">{t('products.browse_all')}</Button>
       </Link>
     </div>
   );

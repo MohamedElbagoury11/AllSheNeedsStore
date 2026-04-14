@@ -40,8 +40,8 @@ const Terms = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">5. Contact Information</h2>
-            <p>If you have any questions about these Terms, please contact us at support@allsheneeds.com.</p>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">{t('terms.section5_title')}</h2>
+            <p>{t('terms.section5_text')}</p>
           </section>
         </div>
       </div>

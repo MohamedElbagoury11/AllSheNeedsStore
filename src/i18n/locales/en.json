@@ -5,7 +5,12 @@
     "search_placeholder": "Search for products, categories...",
     "sign_in": "Sign In",
     "cart": "Cart",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "search": "Search",
+    "menu": "Menu",
+    "notifications": "Notifications",
+    "language": "Language",
+    "view_profile": "View Profile"
   },
   "hero": {
     "title": "Elevate Your Everyday Essentials.",
@@ -14,17 +19,37 @@
     "trending": "View Trending",
     "new_collection": "New Collection 2026"
   },
+  "home": {
+    "shop_by_category": "Shop by Categories",
+    "featured_products": "Featured Products",
+    "no_categories": "No categories found",
+    "no_products": "No products available yet",
+    "trending_now": "Trending Now",
+    "newsletter_title": "Get 20% Off Your First Order",
+    "newsletter_desc": "Sign up for our newsletter and receive exclusive drops, early sale access, and a welcome discount.",
+    "subscribe": "Subscribe",
+    "coming_soon": "More products coming soon."
+  },
   "footer": {
     "description": "The ultimate destination for premium quality products.",
     "shop": "Shop",
     "support": "Support",
     "legal": "Legal",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "arrivals": "New Arrivals",
+    "privacy": "Privacy Policy"
   },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
-    "cod": "Cash on Delivery"
+    "cod": "Cash on Delivery",
+    "address_label": "Address",
+    "phone_label": "Telephone",
+    "email_label": "Email",
+    "guest": "Guest User",
+    "view": "View",
+    "required": "Required",
+    "only": "Only"
   },
   "auth": {
     "sign_in": "Sign In",
@@ -32,9 +57,23 @@
     "password": "Password",
     "forgot_password": "Forgot password?",
     "dont_have_account": "Don't have an account?",
-    "create_account": "Create an account",
-    "signing_in": "Signing in...",
-    "enter_details": "Enter your email and password to access your account"
+    "create_account": "Create Account",
+    "enter_details": "Enter your details to get started",
+    "full_name": "Full Name",
+    "confirm_password": "Confirm Password",
+    "already_have_account": "Already have an account?",
+    "welcome_back": "Welcome back!",
+    "account_created": "Account created successfully!",
+    "login_failed": "Login failed",
+    "reg_failed": "Registration failed",
+    "name_required": "Name is required",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "confirm_required": "Please confirm password",
+    "password_mismatch": "Passwords do not match",
+    "min_chars": "Minimum 6 characters",
+    "creating_account": "Creating account...",
+    "signing_in": "Signing in..."
   },
   "product": {
     "egp": "EGP",
@@ -54,6 +93,37 @@
     "showing_results": "Showing results for",
     "in": "in",
     "all_categories": "all categories"
+  },
+  "review": {
+    "title": "Customer Reviews",
+    "write_review": "Write a Review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "submit": "Submit Review",
+    "success_pending": "Thank you! Your review has been submitted and is pending approval.",
+    "already_reviewed": "You have already reviewed this product.",
+    "no_reviews": "No reviews yet. Be the first to review!",
+    "login_to_review": "Please login to write a review",
+    "pending": "Pending Approval",
+    "approved": "Approved",
+    "stars": "Stars"
+  },
+  "products": {
+    "filters": "Filters",
+    "categories": "Categories",
+    "sort_by": "Sort by",
+    "sort_newest": "Newest",
+    "sort_price_asc": "Price: Low to High",
+    "sort_price_desc": "Price: High to Low",
+    "sort_rating": "Best Rating",
+    "no_results": "No products found",
+    "no_results_for": "No results found for \"{{query}}\"",
+    "enter_search": "Enter a search term",
+    "search_empty_desc": "We couldn't find anything matching your search. Please try checking your spelling or use more general terms.",
+    "browse_all": "Browse All Products",
+    "try_adjusting": "Try adjusting your filters or search query.",
+    "previous": "Previous",
+    "next": "Next"
   },
   "cart": {
     "title": "Shopping Cart",
@@ -84,14 +154,16 @@
     "city": "City",
     "postal_code": "Postal Code",
     "payment_method": "Payment Method",
-    "cod_title": "Cash on Delivery (COD)",
+    "cod_title": "Cash on Delivery",
     "cod_desc": "Payment will be collected at your doorstep when your order is delivered.",
     "place_order": "Place Order",
     "order_summary": "Order Summary",
     "items": "items",
     "total": "Total",
     "toast_success": "Order placed successfully!",
-    "toast_success_desc": "Your order is being processed for Cash on Delivery."
+    "toast_success_desc": "Your order is being processed for Cash on Delivery.",
+    "error_placing": "There was an error placing your order.",
+    "agreement": "By placing this order, you agree to pay the total amount at the time of delivery."
   },
   "about": {
     "title": "Our Story",
@@ -106,7 +178,9 @@
     "curation": "Expert Curation",
     "curation_text": "Every product is handpicked to ensure it aligns with our aesthetic.",
     "customer_first": "Customer First",
-    "customer_first_text": "Your satisfaction is our top priority, from browsing to unboxing."
+    "customer_first_text": "Your satisfaction is our top priority, from browsing to unboxing.",
+    "journey": "Our Journey",
+    "elevating_everyday": "Elevating the Everyday"
   },
   "contact": {
     "title": "Contact Us",
@@ -143,6 +217,52 @@
     "section3_title": "3. Pricing and Payment",
     "section3_text": "All prices are in EGP. We reserve the right to change prices at any time. We currently offer Cash on Delivery.",
     "section4_title": "4. Intellectual Property",
-    "section4_text": "All content on this site is the property of ALL SHE NEEDS and protected by copyright laws."
+    "section4_text": "All content on this site is the property of ALL SHE NEEDS and protected by copyright laws.",
+    "section5_title": "5. Contact Information",
+    "section5_text": "If you have any questions about these Terms, please contact us at support@allsheneeds.com."
+  },
+  "profile": {
+    "personal_info": "Personal Information",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "title": "Your Profile",
+    "saved_addresses": "Saved Addresses",
+    "payment_methods": "Payment Methods",
+    "settings": "Account Settings",
+    "save_changes": "Save Changes",
+    "logout": "Log Out"
+  },
+  "orders": {
+    "history": "Order History",
+    "no_orders": "No orders yet",
+    "placed": "Order Placed",
+    "total": "Total",
+    "ship_to": "Ship To",
+    "id": "Order #",
+    "empty_desc": "When you place an order, it will appear here.",
+    "buy_again": "Buy Again",
+    "view_details": "View Details"
+  },
+  "wishlist": {
+    "title": "Your Wishlist",
+    "empty_title": "Wishlist is empty",
+    "empty_desc": "Discover our beautiful collection and save your favorites here.",
+    "discover": "Discover Products",
+    "items_saved": "Items Saved"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "mark_all_read": "Mark all as read",
+    "empty": "No notifications",
+    "empty_desc": "You're all caught up! Check back later."
+  },
+  "install": {
+    "title": "allsheneeds",
+    "subtitle": "Install the app for a better experience",
+    "button": "Install",
+    "dismiss_label": "Dismiss install banner",
+    "install_label": "Install allsheneeds app"
   }
 }

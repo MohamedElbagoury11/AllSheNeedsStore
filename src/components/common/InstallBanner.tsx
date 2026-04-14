@@ -1,9 +1,11 @@
 import React from 'react';
 import { X, Download } from 'lucide-react';
 import { useInstallPrompt } from '../../hooks/useInstallPrompt';
+import { useTranslation } from 'react-i18next';
 import onlyLogo from '../../assets/OnlyLogo.png';
 
 const InstallBanner: React.FC = () => {
+  const { t } = useTranslation();
   const { showBanner, handleInstall, handleDismiss } = useInstallPrompt();
 
   if (!showBanner) return null;
@@ -78,10 +80,10 @@ const InstallBanner: React.FC = () => {
         />
         <div style={{ minWidth: 0 }}>
           <p style={{ margin: 0, fontWeight: 700, fontSize: '13px', color: '#831843', lineHeight: 1.2 }}>
-            allsheneeds
+            {t('install.title')}
           </p>
           <p style={{ margin: 0, fontSize: '11.5px', color: '#9d174d', lineHeight: 1.3 }}>
-            Install the app for a better experience
+            {t('install.subtitle')}
           </p>
         </div>
       </div>
@@ -92,15 +94,15 @@ const InstallBanner: React.FC = () => {
           id="pwa-install-button"
           className="install-btn"
           onClick={handleInstall}
-          aria-label="Install allsheneeds app"
+          aria-label={t('install.install_label')}
         >
           <Download size={14} />
-          Install
+          {t('install.button')}
         </button>
         <button
           className="install-dismiss"
           onClick={handleDismiss}
-          aria-label="Dismiss install banner"
+          aria-label={t('install.dismiss_label')}
         >
           <X size={16} />
         </button>

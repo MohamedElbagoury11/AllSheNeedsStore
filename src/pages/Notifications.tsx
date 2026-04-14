@@ -4,7 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { PageLoader } from '../components/common/PageLoader';
 import api from '../api/axios';
 
+import { useTranslation } from 'react-i18next';
+
 const Notifications = () => {
+  const { t } = useTranslation();
   const { data: notifications, isLoading } = useQuery({
     queryKey: ['notifications'],
     queryFn: async () => {
@@ -18,8 +21,8 @@ const Notifications = () => {
   return (
     <div className="py-6 max-w-3xl mx-auto">
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Notifications</h1>
-        <button className="text-sm font-medium text-blue-600 hover:underline">Mark all as read</button>
+        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">{t('notifications.title')}</h1>
+        <button className="text-sm font-medium text-blue-600 hover:underline">{t('notifications.mark_all_read')}</button>
       </div>
 
       <div className="space-y-4">
@@ -28,8 +31,8 @@ const Notifications = () => {
         ) : displayNotifs.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[30vh] text-center">
             <Bell size={48} className="text-gray-300 mb-4" />
-            <h3 className="text-xl font-bold text-gray-900">No notifications</h3>
-            <p className="text-gray-500 mt-2">You're all caught up! Check back later.</p>
+            <h3 className="text-xl font-bold text-gray-900">{t('notifications.empty')}</h3>
+            <p className="text-gray-500 mt-2">{t('notifications.empty_desc')}</p>
           </div>
         ) : displayNotifs.map((notif: any) => (
           <div key={notif.id} className={`flex items-start gap-4 p-5 rounded-2xl border transition-all ${

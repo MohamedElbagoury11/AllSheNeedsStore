@@ -3,9 +3,11 @@ import { ShoppingBag, Eye, CreditCard } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { PageLoader } from '../components/common/PageLoader';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const Orders = () => {
+  const { t } = useTranslation();
   const { data: fetchedOrders, isLoading } = useQuery({
     queryKey: ['orders'],
     queryFn: async () => {
@@ -18,7 +20,7 @@ const Orders = () => {
 
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">Order History</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">{t('orders.history')}</h1>
       
       <div className="space-y-6">
         {isLoading ? (
@@ -26,28 +28,28 @@ const Orders = () => {
         ) : displayOrders.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
             <ShoppingBag size={48} className="text-gray-300 mb-4" />
-            <h3 className="text-xl font-bold text-gray-900">No orders yet</h3>
-            <p className="text-gray-500 mt-2">When you place an order, it will appear here.</p>
+            <h3 className="text-xl font-bold text-gray-900">{t('orders.no_orders')}</h3>
+            <p className="text-gray-500 mt-2">{t('orders.empty_desc')}</p>
           </div>
         ) : displayOrders.map((order: any) => (
           <Card key={order.id} className="border-0 shadow-sm ring-1 ring-gray-200 overflow-hidden group">
             <CardHeader className="bg-gray-50 border-b border-gray-100 flex flex-row items-center justify-between py-4">
               <div className="flex items-center gap-6">
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Order Placed</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">{t('orders.placed')}</p>
                   <p className="text-sm font-medium text-gray-900 mt-0.5">{order.date}</p>
                 </div>
                 <div className="hidden sm:block">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Total</p>
-                  <p className="text-sm font-medium text-gray-900 mt-0.5">EGP {order.total.toFixed(2)}</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">{t('orders.total')}</p>
+                  <p className="text-sm font-medium text-gray-900 mt-0.5">{t('product.egp')} {order.total.toFixed(2)}</p>
                 </div>
                 <div className="hidden sm:block">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Ship To</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">{t('orders.ship_to')}</p>
                   <p className="text-sm font-medium text-blue-600 hover:underline cursor-pointer mt-0.5">Jane Doe</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Order #</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">{t('orders.id')}</p>
                 <p className="text-sm font-medium text-gray-900 mt-0.5">{order.id}</p>
               </div>
             </CardHeader>
@@ -60,7 +62,7 @@ const Orders = () => {
                     }`}>
                       {order.status}
                     </span>
-                    <span className="text-sm text-gray-500">{order.items} Items</span>
+                    <span className="text-sm text-gray-500">{order.items} {t('cart.items')}</span>
                   </div>
                   <div className="flex -space-x-3">
                     {/* Mock thumbnails */}
@@ -78,11 +80,9 @@ const Orders = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                  <button className="flex items-center justify-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors">
-                    <ShoppingBag size={16} /> Buy Again
+                    <ShoppingBag size={16} /> {t('orders.buy_again')}
                   </button>
-                  <button className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-gray-300 text-gray-900 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors">
-                    <Eye size={16} /> View Details
+                    <Eye size={16} /> {t('orders.view_details')}
                   </button>
                 </div>
               </div>
