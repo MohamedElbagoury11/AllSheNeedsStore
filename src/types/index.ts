@@ -8,6 +8,7 @@ export interface User {
 
 export interface Product {
   id: string;
+  reviews?: Review[];
   name: string;
   nameEn?: string;
   nameAr?: string;
@@ -67,8 +68,11 @@ export interface Review {
   id: string;
   productId: string;
   userId: string;
-  userName: string;
+  user: {
+    name: string;
+  };
   rating: number;
   comment: string;
+  isApproved: boolean;
   createdAt: string;
 }

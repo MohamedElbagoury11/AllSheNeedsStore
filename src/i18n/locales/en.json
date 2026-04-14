@@ -264,5 +264,18 @@
     "button": "Install",
     "dismiss_label": "Dismiss install banner",
     "install_label": "Install allsheneeds app"
+  },
+  "review": {
+    "rating": "Rating",
+    "comment": "Your Review",
+    "title": "Subject",
+    "write_review": "Write a Review",
+    "submit": "Submit Review",
+    "stars": "Stars",
+    "login_to_review": "Please sign in to leave a review",
+    "success_pending": "Your review has been submitted and is awaiting moderation. Thank you!",
+    "no_reviews": "No reviews yet. Be the first to review this product!",
+    "verified_purchase": "Verified Purchase",
+    "failed_submit": "Failed to submit review. Please try again."
   }
 }

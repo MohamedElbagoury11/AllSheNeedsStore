@@ -232,27 +232,26 @@ const ProductDetails = () => {
                     <div className="px-3 py-1 bg-gray-100 rounded-full text-sm font-bold text-gray-700">{product.reviewsCount}</div>
                   </div>
                   
-                  {product.reviews && product.reviews.length > 0 ? (
+                  {product.reviews && product.reviews.filter((r: any) => r.isApproved).length > 0 ? (
                     <div className="divide-y divide-gray-100">
-                      {product.reviews.map((review: any) => (
+                      {product.reviews.filter((r: any) => r.isApproved).map((review: any) => (
                         <div key={review.id} className="py-8 first:pt-0">
                           <div className="flex items-center gap-3 mb-4">
                             <div className="w-12 h-12 rounded-full bg-blue-100 flex shrink-0 items-center justify-center font-bold text-blue-700 text-lg shadow-inner">
-                              {review.userName.charAt(0).toUpperCase()}
+                              {(review.user?.name || 'U').charAt(0).toUpperCase()}
                             </div>
                             <div>
                               <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-gray-900">{review.userName}</h4>
+                                <h4 className="font-bold text-gray-900">{review.user?.name || 'Anonymous'}</h4>
                                 <div className="flex items-center text-yellow-400">
                                   {[...Array(5)].map((_, j) => (
                                     <Star key={j} size={14} fill={j < review.rating ? "currentColor" : "none"} strokeWidth={j < review.rating ? 0 : 2} />
                                   ))}
                                 </div>
                               </div>
-                              <p className="text-xs text-gray-400 font-medium uppercase tracking-tighter">{t('review.verified_purchase', 'Verified Purchase')}</p>
+                              <p className="text-xs text-gray-400 font-medium uppercase tracking-tighter">{t('review.verified_purchase')}</p>
                             </div>
                           </div>
-                          <h5 className="font-bold text-gray-900 mb-2">{review.title}</h5>
                           <p className="text-gray-600 text-base leading-relaxed bg-white/50 p-4 rounded-xl border border-gray-50">{review.comment}</p>
                         </div>
                       ))}
