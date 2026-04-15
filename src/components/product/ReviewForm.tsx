@@ -31,6 +31,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, onSuccess }) => {
         product: { id: productId },
         rating,
         comment,
+        title: 'Review',
       });
       setSuccess(true);
       setComment('');
