@@ -2,6 +2,7 @@ import React from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { useTranslation } from 'react-i18next';
+import { Search } from 'lucide-react';
 
 // For a real app, you would use React Query here similarly to Products.tsx
 const SearchResults = () => {
