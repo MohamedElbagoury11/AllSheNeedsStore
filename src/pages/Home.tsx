@@ -110,7 +110,7 @@ const Home = () => {
       {/* Shop by Categories */}
       <section>
         <div className="flex items-center justify-between mb-8">
-          <h2 className=\"text-2xl font-bold text-gray-900 tracking-tight\">{t('home.shop_by_category')}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{t('home.shop_by_category')}</h2>
           <Link to="/products" className="text-blue-600 font-medium hover:underline flex items-center">
             {t('hero.shop_now')} <ArrowRight size={16} className="ml-1 rtl:rotate-180" />
           </Link>
