@@ -129,7 +129,14 @@ const Products = () => {
     <div className="flex flex-col md:flex-row gap-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-8">
       <SEO title={seoTitle} description={seoDescription} />
       <div className="md:hidden flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-        <button 
+        <button
+          onClick={() => setShowMobileFilters(!showMobileFilters)}
+          className="flex items-center gap-2 text-sm font-semibold bg-gray-100 px-3 py-2 rounded-lg"
+        >
+          <Filter size={18} />
+          {t('products.filters')}
+        </button>
+        <div className="text-sm font-medium text-gray-500">
           {displayProducts.length} {t('products.total_products', 'Products')}
         </div>
       </div>
