@@ -28,10 +28,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, onSuccess }) => {
     
     try {
       await api.post('/reviews', {
-        productId,
+        product: { id: productId },
         rating,
         comment,
-        title: 'Review' // Or add a title field if desired
       });
       setSuccess(true);
       setComment('');
