@@ -153,9 +153,14 @@ const ProductDetails = () => {
             {/* Add to Cart */}
             <button 
               onClick={handleAddToCart}
-              className="flex-1 flex items-center justify-center gap-2 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              disabled={product.stock === 0}
+              className={`flex-1 flex items-center justify-center gap-2 h-14 rounded-full font-bold text-lg shadow-lg transition-all ${
+                product.stock === 0 
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20 hover:scale-[1.02] active:scale-[0.98]'
+              }`}
             >
-              <ShoppingCart size={22} /> {t('product.add_to_cart')}
+              <ShoppingCart size={22} /> {product.stock === 0 ? t('product.not_exist_coming_soon') : t('product.add_to_cart')}
             </button>
             
             {/* Wishlist */}

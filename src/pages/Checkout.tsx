@@ -28,6 +28,12 @@ const Checkout = () => {
   }, [items.length, navigate]);
 
   const onSubmit = async (data: any) => {
+    const outOfStockItems = items.filter(item => item.product && item.product.stock === 0);
+    if (outOfStockItems.length > 0) {
+      addToast({ title: t('common.error'), description: t('product.not_exist_coming_soon'), type: 'error' });
+      return;
+    }
+
     try {
       await api.post('/orders', {
         shipping: data,
