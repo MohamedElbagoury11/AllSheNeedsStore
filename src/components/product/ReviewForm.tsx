@@ -3,6 +3,7 @@ import { Star, Send, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
+import { title } from 'process';
 
 interface ReviewFormProps {
   productId: string;
@@ -28,9 +29,10 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, onSuccess }) => {
     
     try {
       await api.post('/reviews', {
-        productId,
+        product: { id: productId },
         rating,
         comment,
+        title:"title"
       });
       setSuccess(true);
       setComment('');
