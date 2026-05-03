@@ -19,7 +19,7 @@ const Notifications = () => {
 
   const markAllReadMutation = useMutation({
     mutationFn: async () => {
-      await api.post('/notifications/mark-all-read');
+      await api.patch('/notifications/mark-all-read');
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
@@ -28,7 +28,7 @@ const Notifications = () => {
 
   const markReadMutation = useMutation({
     mutationFn: async (id: string) => {
-      await api.post(`/notifications/${id}/read`);
+      await api.patch(`/notifications/${id}/read`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });

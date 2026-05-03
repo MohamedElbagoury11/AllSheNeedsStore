@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle2, ShieldCheck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
@@ -14,8 +15,29 @@ const Checkout = () => {
   const { t, i18n } = useTranslation();
   const { items, subtotal, clearCart } = useCart();
   const { addToast } = useNotification();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
+    defaultValues: {
+      fullName: user?.name || '',
+      email: user?.email || '',
+      address: '',
+      city: '',
+      phone: ''
+    }
+  });
+
+  React.useEffect(() => {
+    if (user) {
+      reset({
+        fullName: user.name,
+        email: user.email,
+        address: '',
+        city: '',
+        phone: ''
+      });
+    }
+  }, [user, reset]);
   
  // const tax = subtotal * 0.08;
   // const shipping = subtotal > 150 ? 0 : 15;
@@ -74,8 +96,8 @@ const Checkout = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">{t('checkout.full_name')}</label>
-                  <Input {...register('firstName', { required: t('common.required') })} />
-                  {errors.firstName && <span className="text-xs text-red-500">{errors.firstName.message as string}</span>}
+                  <Input {...register('fullName', { required: t('common.required') })} />
+                  {errors.fullName && <span className="text-xs text-red-500">{errors.fullName.message as string}</span>}
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">{t('auth.email')}</label>
@@ -92,10 +114,18 @@ const Checkout = () => {
                 <div className="space-y-2 md:col-span-1">
                   <label className="text-sm font-medium text-gray-700">{t('checkout.city')}</label>
                   <Input {...register('city', { required: t('common.required') })} />
+                  {errors.city && <span className="text-xs text-red-500">{errors.city.message as string}</span>}
                 </div>
-                <div className="space-y-2 md:col-span-1">
-                  <label className="text-sm font-medium text-gray-700">{t('checkout.postal_code')}</label>
-                  <Input {...register('zipCode', { required: t('common.required') })} />
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-sm font-medium text-gray-700">{t('checkout.phone')}</label>
+                  <Input {...register('phone', { 
+                    required: t('common.required'),
+                    pattern: {
+                      value: /^01\d{9}$/,
+                      message: t('checkout.phone_invalid', 'Must be 11 digits starting with 01')
+                    }
+                  })} placeholder="01xxxxxxxxx" />
+                  {errors.phone && <span className="text-xs text-red-500">{errors.phone.message as string}</span>}
                 </div>
               </div>
             </CardContent>
