@@ -6,6 +6,8 @@ import Logo from '../common/Logo';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
+import { useQuery } from '@tanstack/react-query';
+import api from '../../api/axios';
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -16,6 +18,20 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const { data: notifications } = useQuery({
+    queryKey: ['notifications'],
+    queryFn: async () => {
+      const { data } = await api.get('/notifications');
+      return data.data ? data.data : data;
+    },
+    enabled: isAuthenticated,
+    refetchInterval: 1000 * 60 * 2, // Refetch every 2 minutes
+  });
+
+  const unreadCount = React.useMemo(() => {
+    return notifications ? (notifications as any[]).filter(n => !n.read).length : 0;
+  }, [notifications]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,6 +89,11 @@ const Navbar = () => {
 
           <Link to="/notifications" className="text-gray-600 hover:text-blue-600 transition-colors relative hidden sm:block">
             <Bell size={22} className="stroke-[1.5]" />
+            {unreadCount > 0 && (
+              <span className={`absolute -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white shadow-sm ring-2 ring-white ${document.documentElement.dir === 'rtl' ? '-left-1' : '-right-1'}`}>
+                {unreadCount > 9 ? '9+' : unreadCount}
+              </span>
+            )}
           </Link>
           
           <Link to="/wishlist" className="text-gray-600 hover:text-blue-600 transition-colors hidden sm:block">
@@ -139,9 +160,14 @@ const Navbar = () => {
                   <Heart size={24} className="text-red-500" />
                   <span className="text-xs font-medium">{t('nav.wishlist')}</span>
                 </Link>
-                <Link to="/notifications" onClick={toggleMobileMenu} className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors">
+                <Link to="/notifications" onClick={toggleMobileMenu} className="relative flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors">
                   <Bell size={24} className="text-blue-500" />
                   <span className="text-xs font-medium">{t('nav.notifications')}</span>
+                  {unreadCount > 0 && (
+                    <span className="absolute top-3 right-8 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white shadow-sm ring-2 ring-white">
+                      {unreadCount > 9 ? '9+' : unreadCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             </div>

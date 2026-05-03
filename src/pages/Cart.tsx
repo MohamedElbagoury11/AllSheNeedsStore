@@ -11,8 +11,8 @@ const Cart = () => {
   const { items, updateQuantity, removeFromCart, subtotal, itemCount } = useCart();
   
  // const tax = subtotal * 0.08; // 8% pseudo-tax
-  const shipping = 50; // Flat shipping fee
-  const total = subtotal + shipping;
+  // const shipping = 50; // Flat shipping fee
+  const total = subtotal;
 
   if (items.length === 0) {
     return (
@@ -104,6 +104,7 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>{t('cart.shipping')}</span>
+                <span className="font-medium text-gray-900">+ shipping</span>
               </div>
 
             </div>
